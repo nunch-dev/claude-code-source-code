@@ -11,7 +11,7 @@
 // @[MODEL LAUNCH]: Remove this section when we launch numbat.
 ```
 
-**Numbat** (袋食蚁兽)는 출시 예정 모델의 코드명입니다. 이 주석은 Numbat 출시 시 출력 효율 섹션이 수정될 것임을 시사하며, 이는 더 나은 네이티브 출력 제어 능력을 가질 가능성을 암시합니다.
+**Numbat** 는 출시 예정 모델의 코드명입니다. 이 주석은 Numbat 출시 시 출력 효율 섹션이 수정될 것임을 시사하며, 이는 더 나은 네이티브 출력 제어 능력을 가질 가능성을 암시합니다.
 
 ### 향후 버전 번호
 
@@ -25,9 +25,9 @@
 ### 코드명 진화 체인
 
 ```
-Fennec (耳廓狐) → Opus 4.6 → [Numbat?]
-Capybara (水豚) → Sonnet v8 → [?]
-Tengu (天狗) → telemetry/product prefix
+Fennec → Opus 4.6 → [Numbat?]
+Capybara → Sonnet v8 → [?]
+Tengu → telemetry/product prefix
 ```
 
 Fennec에서 Opus로의 마이그레이션은 다음과 같이 문서화되어 있습니다.
