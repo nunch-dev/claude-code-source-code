@@ -10,10 +10,10 @@ Anthropic은 내부 모델 코드명으로 **동물 이름**을 사용합니다.
 
 | 코드명 | 역할 | 근거 |
 |--------|------|------|
-| **Tengu** (天狗) | 제품/텔레메트리 접두사, 또는 모델일 가능성 | 250개 이상의 analytics 이벤트와 feature flag 전부에 `tengu_*` 접두사 사용 |
+| **Tengu** | 제품/텔레메트리 접두사, 또는 모델일 가능성 | 250개 이상의 analytics 이벤트와 feature flag 전부에 `tengu_*` 접두사 사용 |
 | **Capybara** | Sonnet 계열 모델, 현재 v8 | `capybara-v2-fast[1m]`, v8 행동 문제 대응용 프롬프트 패치 |
-| **Fennec** (耳廓狐) | Opus 4.6의 이전 이름 | 마이그레이션: `fennec-latest` → `opus` |
-| **Numbat** (袋食蚁兽) | 다음 모델 출시명 | 주석: "numbat를 출시하면 이 섹션을 제거하라" |
+| **Fennec** | Opus 4.6의 이전 이름 | 마이그레이션: `fennec-latest` → `opus` |
+| **Numbat**  | 다음 모델 출시명 | 주석: "numbat를 출시하면 이 섹션을 제거하라" |
 
 ### 코드명 보호
 
