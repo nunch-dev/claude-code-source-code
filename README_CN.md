@@ -5,7 +5,7 @@
 > 从 npm 包 `@anthropic-ai/claude-code` **2.1.88** 版本中提取。
 > 发布的包只有一个打包后的 `cli.js`（~12MB）。本仓库的 `src/` 目录包含从 npm 包中解包的 **TypeScript 源码**。
 
-**语言**: [English](README.md) | **中文**
+**语言**: [English](README.md) | **中文** | [한국어](README_KR.md)
 
 ---
 
@@ -20,7 +20,7 @@
 
 ## 深度分析文档 (`docs/`)
 
-基于 v2.1.88 反编译源码的分析报告，中英双语。
+基于 v2.1.88 反编译源码的分析报告，支持英文、中文、韩文。
 
 ```
 docs/
@@ -31,23 +31,30 @@ docs/
 │   ├── [04-remote-control-and-killswitches.md]# Remote Control — managed settings, killswitches, model overrides
 │   └── [05-future-roadmap.md]                 # Future Roadmap — Numbat, KAIROS, voice mode, unreleased tools
 │
-└── zh/                                        # 中文
-    ├── [01-遥测与隐私分析.md]                    # 遥测与隐私 — 收集了什么，为什么无法退出
-    ├── [02-隐藏功能与模型代号.md]                # 隐藏功能 — 模型代号，feature flag，内外用户差异
-    ├── [03-卧底模式分析.md]                     # 卧底模式 — 在开源项目中隐藏 AI 身份
-    ├── [04-远程控制与紧急开关.md]                # 远程控制 — 托管设置，紧急开关，模型覆盖
-    └── [05-未来路线图.md]                       # 未来路线图 — Numbat，KAIROS，语音模式，未上线工具
+├── zh/                                        # 中文
+│   ├── [01-遥测与隐私分析.md]                    # 遥测与隐私 — 收集了什么，为什么无法退出
+│   ├── [02-隐藏功能与模型代号.md]                # 隐藏功能 — 模型代号，feature flag，内外用户差异
+│   ├── [03-卧底模式分析.md]                     # 卧底模式 — 在开源项目中隐藏 AI 身份
+│   ├── [04-远程控制与紧急开关.md]                # 远程控制 — 托管设置，紧急开关，模型覆盖
+│   └── [05-未来路线图.md]                       # 未来路线图 — Numbat，KAIROS，语音模式，未上线工具
+│
+└── kr/                                        # 한국어
+    ├── [01-telemetry-and-privacy.md]          # 텔레메트리와 프라이버시 — 무엇을 수집하는지, 왜 끌 수 없는지
+    ├── [02-hidden-features-and-codenames.md]  # 숨겨진 기능과 모델 코드명 — 코드명, 플래그, 내부/외부 차이
+    ├── [03-undercover-mode.md]                # 위장 모드 분석 — 공개 저장소에서 AI 작성 사실 숨기기
+    ├── [04-remote-control-and-killswitches.md]# 원격 제어와 킬스위치 — 관리 설정, 긴급 차단, 모델 override
+    └── [05-future-roadmap.md]                 # 미래 로드맵 — Numbat, KAIROS, 음성 모드, 미공개 도구
 ```
 
-> 点击文件名即可跳转到对应报告。
+> 请使用下方表格中的链接打开对应的完整报告。
 
 | # | 主题 | 核心发现 | 链接 |
 |---|------|---------|------|
-| 01 | **遥测与隐私** | 双层分析管道（1P→Anthropic, Datadog）。环境指纹、进程指标、每个事件携带会话/用户 ID。**没有面向用户的退出开关**。`OTEL_LOG_TOOL_DETAILS=1` 可记录完整工具输入。 | [EN](docs/en/01-telemetry-and-privacy.md) · [中文](docs/zh/01-遥测与隐私分析.md) |
-| 02 | **隐藏功能与代号** | 动物代号体系（Capybara v8, Tengu, Fennec→Opus 4.6, **Numbat** 下一代）。Feature flag 用随机词对掩盖用途。内部用户获得更好的 prompt 和验证代理。隐藏命令：`/btw`、`/stickers`。 | [EN](docs/en/02-hidden-features-and-codenames.md) · [中文](docs/zh/02-隐藏功能与模型代号.md) |
-| 03 | **卧底模式** | Anthropic 员工在公开仓库自动进入卧底模式。模型指令："**不要暴露你的掩护身份**" — 剥离所有 AI 归属，commit 看起来像人类写的。**没有强制关闭选项。** | [EN](docs/en/03-undercover-mode.md) · [中文](docs/zh/03-卧底模式分析.md) |
-| 04 | **远程控制与 Killswitch** | 每小时轮询 `/api/claude_code/settings`。危险变更弹出阻塞对话框 — **拒绝 = 程序退出**。6+ 紧急开关（绕过权限、快速模式、语音模式、分析 sink）。GrowthBook 可无同意改变任何用户行为。 | [EN](docs/en/04-remote-control-and-killswitches.md) · [中文](docs/zh/04-远程控制与紧急开关.md) |
-| 05 | **未来路线图** | **Numbat** 代号确认。Opus 4.7 / Sonnet 4.8 开发中。**KAIROS** = 完全自主代理模式，心跳 `<tick>`、推送通知、PR 订阅。语音模式（push-to-talk）已就绪。发现 17 个未上线工具。 | [EN](docs/en/05-future-roadmap.md) · [中文](docs/zh/05-未来路线图.md) |
+| 01 | **遥测与隐私** | 双层分析管道（1P→Anthropic, Datadog）。环境指纹、进程指标、每个事件携带会话/用户 ID。**没有面向用户的退出开关**。`OTEL_LOG_TOOL_DETAILS=1` 可记录完整工具输入。 | [EN](docs/en/01-telemetry-and-privacy.md) · [中文](docs/zh/01-遥测与隐私分析.md) · [한국어](docs/kr/01-telemetry-and-privacy.md) |
+| 02 | **隐藏功能与代号** | 动物代号体系（Capybara v8, Tengu, Fennec→Opus 4.6, **Numbat** 下一代）。Feature flag 用随机词对掩盖用途。内部用户获得更好的 prompt 和验证代理。隐藏命令：`/btw`、`/stickers`。 | [EN](docs/en/02-hidden-features-and-codenames.md) · [中文](docs/zh/02-隐藏功能与模型代号.md) · [한국어](docs/kr/02-hidden-features-and-codenames.md) |
+| 03 | **卧底模式** | Anthropic 员工在公开仓库自动进入卧底模式。模型指令："**不要暴露你的掩护身份**" — 剥离所有 AI 归属，commit 看起来像人类写的。**没有强制关闭选项。** | [EN](docs/en/03-undercover-mode.md) · [中文](docs/zh/03-卧底模式分析.md) · [한국어](docs/kr/03-undercover-mode.md) |
+| 04 | **远程控制与 Killswitch** | 每小时轮询 `/api/claude_code/settings`。危险变更弹出阻塞对话框 — **拒绝 = 程序退出**。6+ 紧急开关（绕过权限、快速模式、语音模式、分析 sink）。GrowthBook 可无同意改变任何用户行为。 | [EN](docs/en/04-remote-control-and-killswitches.md) · [中文](docs/zh/04-远程控制与紧急开关.md) · [한국어](docs/kr/04-remote-control-and-killswitches.md) |
+| 05 | **未来路线图** | **Numbat** 代号确认。Opus 4.7 / Sonnet 4.8 开发中。**KAIROS** = 完全自主代理模式，心跳 `<tick>`、推送通知、PR 订阅。语音模式（push-to-talk）已就绪。发现 17 个未上线工具。 | [EN](docs/en/05-future-roadmap.md) · [中文](docs/zh/05-未来路线图.md) · [한국어](docs/kr/05-future-roadmap.md) |
 
 ---
 
