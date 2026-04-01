@@ -378,7 +378,7 @@ src/
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                         ENTRY LAYER                                 │
-│  cli.tsx ──> main.tsx ──> REPL.tsx (interactive)                   │
+│  cli.tsx ──> main.tsx ──> REPL.tsx (interactive)                    │
 │                     └──> QueryEngine.ts (headless/SDK)              │
 └──────────────────────────────┬──────────────────────────────────────┘
                                │
@@ -387,13 +387,13 @@ src/
 │                       QUERY ENGINE                                  │
 │  submitMessage(prompt) ──> AsyncGenerator<SDKMessage>               │
 │    │                                                                │
-│    ├── fetchSystemPromptParts()    ──> 시스템 프롬프트 조립          │
-│    ├── processUserInput()          ──> /commands 처리               │
-│    ├── query()                     ──> 메인 에이전트 루프           │
-│    │     ├── StreamingToolExecutor ──> 병렬 도구 실행               │
-│    │     ├── autoCompact()         ──> 컨텍스트 압축               │
-│    │     └── runTools()            ──> 도구 오케스트레이션          │
-│    └── yield SDKMessage            ──> 소비자에게 스트리밍          │
+│    ├── fetchSystemPromptParts()    ──> 시스템 프롬프트 조립              │
+│    ├── processUserInput()          ──> /commands 처리                │
+│    ├── query()                     ──> 메인 에이전트 루프               │
+│    │     ├── StreamingToolExecutor ──> 병렬 도구 실행                  │
+│    │     ├── autoCompact()         ──> 컨텍스트 압축                   │
+│    │     └── runTools()            ──> 도구 오케스트레이션               │
+│    └── yield SDKMessage            ──> 소비자에게 스트리밍               │
 └──────────────────────────────┬──────────────────────────────────────┘
                                │
               ┌────────────────┼────────────────┐
@@ -501,27 +501,27 @@ src/
     모든 도구는 다음을 구현합니다:
     ┌────────────────────────────────────────────────────────┐
     │  LIFECYCLE                                             │
-    │  ├── validateInput()      → 잘못된 인자를 조기 거부    │
-    │  ├── checkPermissions()   → 도구별 권한 검사           │
-    │  └── call()               → 실행 후 결과 반환          │
+    │  ├── validateInput()      → 잘못된 인자를 조기 거부          │
+    │  ├── checkPermissions()   → 도구별 권한 검사               │
+    │  └── call()               → 실행 후 결과 반환              │
     │                                                        │
     │  CAPABILITIES                                          │
-    │  ├── isEnabled()          → feature gate 검사          │
-    │  ├── isConcurrencySafe()  → 병렬 실행 가능 여부        │
-    │  ├── isReadOnly()         → 부작용이 없는지            │
-    │  ├── isDestructive()      → 되돌릴 수 없는 작업인지    │
-    │  └── interruptBehavior()  → 사용자 입력 시 취소/차단   │
+    │  ├── isEnabled()          → feature gate 검사           │
+    │  ├── isConcurrencySafe()  → 병렬 실행 가능 여부            │
+    │  ├── isReadOnly()         → 부작용이 없는지                │
+    │  ├── isDestructive()      → 되돌릴 수 없는 작업인지          │
+    │  └── interruptBehavior()  → 사용자 입력 시 취소/차단         │
     │                                                        │
     │  RENDERING (React/Ink)                                 │
-    │  ├── renderToolUseMessage()     → 입력 표시            │
-    │  ├── renderToolResultMessage()  → 출력 표시            │
+    │  ├── renderToolUseMessage()     → 입력 표시              │
+    │  ├── renderToolResultMessage()  → 출력 표시              │
     │  ├── renderToolUseProgressMessage() → spinner/status   │
-    │  └── renderGroupedToolUse()     → 병렬 도구 그룹       │
+    │  └── renderGroupedToolUse()     → 병렬 도구 그룹          │
     │                                                        │
     │  AI FACING                                             │
-    │  ├── prompt()             → LLM용 도구 설명           │
-    │  ├── description()        → 동적 설명                 │
-    │  └── mapToolResultToAPI() → API 응답 형식으로 변환    │
+    │  ├── prompt()             → LLM용 도구 설명               │
+    │  ├── description()        → 동적 설명                    │
+    │  └── mapToolResultToAPI() → API 응답 형식으로 변환          │
     └────────────────────────────────────────────────────────┘
 ```
 
@@ -564,34 +564,34 @@ src/
           │
           ▼
     ┌─ validateInput() ──────────────────────────────────┐
-    │  어떤 권한 검사보다 먼저 잘못된 입력을 거부        │
+    │  어떤 권한 검사보다 먼저 잘못된 입력을 거부                  │
     └────────────────────┬───────────────────────────────┘
                          │
                          ▼
     ┌─ PreToolUse Hooks ─────────────────────────────────┐
-    │  사용자 정의 셸 명령(settings.json hooks)          │
-    │  승인, 거부, 입력 수정이 가능                      │
+    │  사용자 정의 셸 명령(settings.json hooks)              │
+    │  승인, 거부, 입력 수정이 가능                            │
     └────────────────────┬───────────────────────────────┘
                          │
                          ▼
     ┌─ Permission Rules ─────────────────────────────────┐
-    │  alwaysAllowRules: 도구 이름/패턴 일치 → 자동 허용 │
-    │  alwaysDenyRules:  도구 이름/패턴 일치 → 거부      │
-    │  alwaysAskRules:   도구 이름/패턴 일치 → 질의      │
-    │  출처: 설정, CLI 인자, 세션 결정                   │
+    │  alwaysAllowRules: 도구 이름/패턴 일치 → 자동 허용        │
+    │  alwaysDenyRules:  도구 이름/패턴 일치 → 거부            │
+    │  alwaysAskRules:   도구 이름/패턴 일치 → 질의            │
+    │  출처: 설정, CLI 인자, 세션 결정                         │
     └────────────────────┬───────────────────────────────┘
                          │
                     규칙이 없으면?
                          │
                          ▼
     ┌─ Interactive Prompt ───────────────────────────────┐
-    │  사용자는 도구 이름과 입력을 확인                   │
-    │  옵션: Allow Once / Allow Always / Deny            │
+    │  사용자는 도구 이름과 입력을 확인                          │
+    │  옵션: Allow Once / Allow Always / Deny             │
     └────────────────────┬───────────────────────────────┘
                          │
                          ▼
     ┌─ checkPermissions() ───────────────────────────────┐
-    │  도구별 로직(예: 경로 샌드박싱)                     │
+    │  도구별 로직(예: 경로 샌드박싱)                           │
     └────────────────────┬───────────────────────────────┘
                          │
                     APPROVED → tool.call()
@@ -629,9 +629,9 @@ src/
     SWARM MODE (feature-gated):
     ┌─────────────────────────────────────────────┐
     │  Lead Agent                                 │
-    │    ├── Teammate A ──> Task 1 선점           │
-    │    ├── Teammate B ──> Task 2 선점           │
-    │    └── Teammate C ──> Task 3 선점           │
+    │    ├── Teammate A ──> Task 1 선점            │
+    │    ├── Teammate B ──> Task 2 선점            │
+    │    └── Teammate C ──> Task 3 선점            │
     │                                             │
     │  Shared: task board, message inbox          │
     │  Isolated: messages[], file cache, cwd      │
@@ -647,20 +647,20 @@ src/
     ═════════════════════
 
     ┌─────────────────────────────────────────────────────┐
-    │  시스템 프롬프트 (tools, permissions, CLAUDE.md)    │
-    │  ══════════════════════════════════════════════      │
+    │  시스템 프롬프트 (tools, permissions, CLAUDE.md)        │
+    │  ══════════════════════════════════════════════     │
     │                                                     │
-    │  대화 히스토리                                      │
+    │  대화 히스토리                                         │
     │  ┌─────────────────────────────────────────────┐    │
-    │  │ [오래된 메시지의 압축 요약]                  │    │
-    │  │ ═══════════════════════════════════════════  │    │
+    │  │ [오래된 메시지의 압축 요약]                       │    │
+    │  │ ═══════════════════════════════════════════ │    │
     │  │ [compact_boundary marker]                   │    │
     │  │ ─────────────────────────────────────────── │    │
-    │  │ [최근 메시지 — 완전 보존]                   │    │
-    │  │ user → assistant → tool_use → tool_result  │    │
+    │  │ [최근 메시지 — 완전 보존]                        │    │
+    │  │ user → assistant → tool_use → tool_result   │    │
     │  └─────────────────────────────────────────────┘    │
     │                                                     │
-    │  현재 턴 (user + assistant response)                │
+    │  현재 턴 (user + assistant response)                  │
     └─────────────────────────────────────────────────────┘
 
     세 가지 압축 전략:
@@ -687,31 +687,31 @@ src/
 
 ```
     ┌─────────────────────────────────────────────────────────┐
-    │                  MCP ARCHITECTURE                        │
+    │                  MCP ARCHITECTURE                       │
     │                                                         │
     │  MCPConnectionManager.tsx                               │
-    │    ├── Server Discovery (settings.json의 설정)          │
-    │    │     ├── stdio  → 자식 프로세스 실행                │
+    │    ├── Server Discovery (settings.json의 설정)           │
+    │    │     ├── stdio  → 자식 프로세스 실행                    │
     │    │     ├── sse    → HTTP EventSource                  │
     │    │     ├── http   → Streamable HTTP                   │
     │    │     ├── ws     → WebSocket                         │
-    │    │     └── sdk    → 프로세스 내 transport             │
+    │    │     └── sdk    → 프로세스 내 transport                │
     │    │                                                    │
-    │    ├── Client Lifecycle                                  │
+    │    ├── Client Lifecycle                                 │
     │    │     ├── connect → initialize → list tools          │
-    │    │     ├── MCPTool 래퍼를 통한 tool call              │
+    │    │     ├── MCPTool 래퍼를 통한 tool call                 │
     │    │     └── disconnect / reconnect with backoff        │
     │    │                                                    │
     │    ├── Authentication                                   │
     │    │     ├── OAuth 2.0 flow (McpOAuthConfig)            │
     │    │     ├── Cross-App Access (XAA / SEP-990)           │
-    │    │     └── 헤더 기반 API key                          │
+    │    │     └── 헤더 기반 API key                            │
     │    │                                                    │
     │    └── Tool Registration                                │
-    │          ├── mcp__<server>__<tool> 네이밍 규칙          │
-    │          ├── MCP 서버에서 동적 스키마 로드              │
-    │          ├── Claude Code로 권한 전달                    │
-    │          └── 리소스 목록 (ListMcpResourcesTool)         │
+    │          ├── mcp__<server>__<tool> 네이밍 규칙             │
+    │          ├── MCP 서버에서 동적 스키마 로드                    │
+    │          ├── Claude Code로 권한 전달                       │
+    │          └── 리소스 목록 (ListMcpResourcesTool)            │
     │                                                         │
     └─────────────────────────────────────────────────────────┘
 ```
@@ -725,7 +725,7 @@ src/
     ══════════════════════════            ═════════════════
 
     ┌───────────────────┐                 ┌──────────────────┐
-    │  Bridge Client    │  ←─ HTTP ──→   │  bridgeMain.ts   │
+    │  Bridge Client    │   ←─ HTTP ──→   │  bridgeMain.ts   │
     │  (Desktop App)    │                 │                  │
     └───────────────────┘                 │  Session Manager │
                                           │  ├── spawn CLI   │
@@ -813,29 +813,29 @@ src/
 
 ```
     ┌──────────────────────────────────────────────────────────┐
-    │                  AppState Store                           │
+    │                  AppState Store                          │
     │                                                          │
     │  AppState {                                              │
     │    toolPermissionContext: {                              │
-    │      mode: PermissionMode,           ← default/plan/etc │
-    │      additionalWorkingDirectories,                        │
-    │      alwaysAllowRules,               ← 자동 승인         │
-    │      alwaysDenyRules,                ← 자동 거부         │
-    │      alwaysAskRules,                 ← 항상 질의         │
+    │      mode: PermissionMode,           ← default/plan/etc  │
+    │      additionalWorkingDirectories,                       │
+    │      alwaysAllowRules,               ← 자동 승인           │
+    │      alwaysDenyRules,                ← 자동 거부           │
+    │      alwaysAskRules,                 ← 항상 질의           │
     │      isBypassPermissionsModeAvailable                    │
     │    },                                                    │
-    │    fileHistory: FileHistoryState,    ← undo 스냅샷       │
-    │    attribution: AttributionState,    ← commit 추적       │
+    │    fileHistory: FileHistoryState,    ← undo 스냅샷        │
+    │    attribution: AttributionState,    ← commit 추적        │
     │    verbose: boolean,                                     │
-    │    mainLoopModel: string,           ← 활성 모델          │
+    │    mainLoopModel: string,           ← 활성 모델            │
     │    fastMode: FastModeState,                              │
     │    speculation: SpeculationState                         │
     │  }                                                       │
     │                                                          │
-    │  React 통합:                                             │
-    │  ├── AppStateProvider   → createContext로 store 생성     │
-    │  ├── useAppState(sel)   → selector 기반 구독             │
-    │  └── useSetAppState()   → immer 스타일 updater 함수      │
+    │  React 통합:                                              │
+    │  ├── AppStateProvider   → createContext로 store 생성      │
+    │  ├── useAppState(sel)   → selector 기반 구독               │
+    │  └── useSetAppState()   → immer 스타일 updater 함수         │
     └──────────────────────────────────────────────────────────┘
 ```
 
