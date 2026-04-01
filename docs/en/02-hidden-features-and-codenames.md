@@ -10,10 +10,10 @@ Anthropic uses **animal names** as internal model codenames. These are aggressiv
 
 | Codename | Role | Evidence |
 |----------|------|----------|
-| **Tengu** (天狗) | Product/telemetry prefix, possibly a model | Used as `tengu_*` prefix for all 250+ analytics events and feature flags |
+| **Tengu** | Product/telemetry prefix, possibly a model | Used as `tengu_*` prefix for all 250+ analytics events and feature flags |
 | **Capybara** | Sonnet-series model, currently at v8 | `capybara-v2-fast[1m]`, prompt patches for v8 behavior issues |
-| **Fennec** (耳廓狐) | Predecessor to Opus 4.6 | Migration: `fennec-latest` → `opus` |
-| **Numbat** (袋食蚁兽) | Next model launch | Comment: "Remove this section when we launch numbat" |
+| **Fennec** | Predecessor to Opus 4.6 | Migration: `fennec-latest` → `opus` |
+| **Numbat** | Next model launch | Comment: "Remove this section when we launch numbat" |
 
 ### Codename Protection
 

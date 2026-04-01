@@ -11,7 +11,7 @@ The most concrete evidence of the next model launch:
 // @[MODEL LAUNCH]: Remove this section when we launch numbat.
 ```
 
-**Numbat** (袋食蚁兽) is the codename for an upcoming model. The comment indicates the output efficiency section will be revised when Numbat launches, suggesting it may have better native output control.
+**Numbat** is the codename for an upcoming model. The comment indicates the output efficiency section will be revised when Numbat launches, suggesting it may have better native output control.
 
 ### Future Version Numbers
 
@@ -25,9 +25,9 @@ The most concrete evidence of the next model launch:
 ### Codename Evolution Chain
 
 ```
-Fennec (耳廓狐) → Opus 4.6 → [Numbat?]
-Capybara (水豚) → Sonnet v8 → [?]
-Tengu (天狗) → telemetry/product prefix
+Fennec → Opus 4.6 → [Numbat?]
+Capybara → Sonnet v8 → [?]
+Tengu → telemetry/product prefix
 ```
 
 The Fennec-to-Opus migration is documented:
