@@ -5,7 +5,7 @@
 > npm 패키지 `@anthropic-ai/claude-code` 버전 **2.1.88**에서 추출했습니다.
 > 배포된 패키지는 단일 번들 `cli.js`(~12MB)만 포함합니다. 이 저장소의 `src/` 디렉터리에는 npm tarball에서 추출한 **비번들 TypeScript 소스**가 들어 있습니다.
 
-**언어**: [English](README.md) | [中文](README_CN.md) | **한국어**
+**언어**: [English](README.md) | **한국어**
 
 ---
 
@@ -22,7 +22,7 @@
 
 ## 심층 분석 보고서 (`docs/`)
 
-역컴파일한 v2.1.88을 바탕으로 작성한 소스 코드 분석 보고서입니다. 다국어(EN/ZH/KR)로 제공합니다.
+역컴파일한 v2.1.88을 바탕으로 작성한 소스 코드 분석 보고서입니다. 영어와 한국어(EN/KR)로 제공합니다.
 
 ```
 docs/
@@ -32,13 +32,6 @@ docs/
 │   ├── [03-undercover-mode.md]                # Undercover Mode — 오픈소스 저장소에서 AI 작성 흔적 감추기
 │   ├── [04-remote-control-and-killswitches.md]# Remote Control — 관리 설정, 킬스위치, 모델 override
 │   └── [05-future-roadmap.md]                 # Future Roadmap — Numbat, KAIROS, 음성 모드, 미공개 도구
-│
-├── zh/                                        # 中文
-│   ├── [01-遥测与隐私分析.md]                    # 遥测与隐私 — 收集了什么，为什么无法退出
-│   ├── [02-隐藏功能与模型代号.md]                # 隐藏功能 — 模型代号，feature flag，内外用户差异
-│   ├── [03-卧底模式分析.md]                     # 卧底模式 — 在开源项目中隐藏 AI 身份
-│   ├── [04-远程控制与紧急开关.md]                # 远程控制 — 托管设置，紧急开关，模型覆盖
-│   └── [05-未来路线图.md]                       # 未来路线图 — Numbat，KAIROS，语音模式，未上线工具
 │
 └── kr/                                        # 한국어
     ├── [01-telemetry-and-privacy.md]          # 텔레메트리와 프라이버시 — 무엇을 수집하는지, 왜 끌 수 없는지
